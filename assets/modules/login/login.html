@@ -34,60 +34,61 @@
     </div>
 </div>
 
-  <div class="card shadow-lg login-card">
-    <div class="login-header">
-      <i class="fa-solid fa-shield-halved"></i>
-      <h3 class="mb-0">CA Validation Tool</h3>
-      <p class="mb-0 mt-2">Login to continue</p>
+
+  <!-- Left Panel -->
+  <div class="login-left">
+    <img src="/assets/ca validation tool logo.png" alt="CA Validation Tool Logo">
+    <h1>CA Validation Tool</h1>
+    <p>Validate PAN, TAN, GSTIN, Aadhaar, Email & Mobile instantly with ease.</p>
+    <div class="login-badges">
+      <span class="login-badge">🔒 Secure</span>
+      <span class="login-badge">⚡ Instant</span>
+      <span class="login-badge">📊 Accurate</span>
     </div>
+  </div>
 
-    <div class="card-body p-4">
-      <div class="mb-3">
-        <label class="form-label fw-semibold">Email Address</label>
-        <div class="input-group">
-          <span class="input-group-text">
-            <i class="fa-solid fa-envelope"></i>
-          </span>
-          <input
-            type="email"
-            id="email"
-            class="form-control"
-            placeholder="Enter your email"
-          />
+  <!-- Right Panel -->
+  <div class="login-right">
+    <div class="card login-card">
+      <div class="login-header">
+        <i class="fa-solid fa-shield-halved"></i>
+        <h3>Welcome Back</h3>
+        <p>Login to continue</p>
+      </div>
+
+      <div class="card-body p-4">
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Email Address</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+            <input type="email" id="email" class="form-control" placeholder="Enter your email" />
+          </div>
         </div>
-      </div>
 
-      <div class="mb-3">
-        <label class="form-label fw-semibold">Password</label>
-        <div class="input-group">
-          <span class="input-group-text">
-            <i class="fa-solid fa-lock"></i>
-          </span>
-          <input
-            type="password"
-            id="password"
-            class="form-control"
-            placeholder="Enter your password"
-          />
-          <span class="input-group-text toggle-password" onclick="togglePassword()">
-            <i class="fa-solid fa-eye" id="eyeIcon"></i>
-          </span>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Password</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+            <input type="password" id="password" class="form-control" placeholder="Enter your password" />
+            <span class="input-group-text toggle-password" onclick="togglePassword()">
+              <i class="fa-solid fa-eye" id="eyeIcon"></i>
+            </span>
+          </div>
         </div>
-      </div>
 
-      <div class="d-grid mt-4">
-        <button class="btn btn-primary btn-login" onclick="login()">
-          <i class="fa-solid fa-right-to-bracket me-2"></i>
-          Login
-        </button>
-      </div>
+        <div class="d-grid mt-4">
+          <button class="btn btn-primary btn-login" onclick="login()">
+            <i class="fa-solid fa-right-to-bracket me-2"></i> Login
+          </button>
+        </div>
 
-      <div class="footer-text">
-        Don't have an account?
-        <a href="/signup.html">Create Account</a>
+        <div class="footer-text">
+          Don't have an account? <a href="/signup.html">Create Account</a>
+        </div>
       </div>
     </div>
   </div>
+
 
   <script src="/assets/modules/login/login.js"></script>
     <script>
