@@ -55,7 +55,6 @@
             const loader = document.getElementById('pageLoader');
             let progress = 0;
             
-            // Simulate fast load from 0 to 90
             const interval = setInterval(() => {
                 if (progress < 90) {
                     progress += Math.random() * 6;
@@ -65,8 +64,7 @@
                 }
             }, 200);
             
-            // On full load → 100% then hide
-            window.addEventListener('load', () => {
+            function hideLoader() {
                 clearInterval(interval);
                 progress = 100;
                 if (bar) bar.style.width = '100%';
@@ -74,7 +72,16 @@
                 setTimeout(() => {
                     if (loader) loader.classList.add('hidden');
                 }, 400);
-            });
+            }
+
+            if (document.readyState === 'complete') {
+                hideLoader();
+            } else {
+                window.addEventListener('load', hideLoader);
+            }
+            
+            // Fallback: forcefully hide after 3 seconds anyway
+            setTimeout(hideLoader, 3000);
         })();
     </script>
 </body>
