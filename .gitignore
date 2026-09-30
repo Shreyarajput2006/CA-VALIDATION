@@ -1,0 +1,17 @@
+# Environment variables - NEVER upload to GitHub
+.env
+.env.local
+.env.production
+
+# Node modules - very large, not needed on GitHub
+node_modules/
+
+# Mac system files
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Puppeteer downloaded browser
+.local-chromium/

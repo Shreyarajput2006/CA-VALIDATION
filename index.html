@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description" content="CA Validation Tool - Validate PAN, TAN, GST, and Aadhaar seamlessly.">
+    <meta property="og:title" content="CA Validation Tool">
+    <meta property="og:description" content="Validate PAN, TAN, GST, and Aadhaar seamlessly.">
+    <meta property="og:image" content="/assets/social-preview.png">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CA Validation Tool | Welcome</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #F4F8FB;
+            color: #0B2545;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #0B2545, #0F8FAF);
+            padding: 14px 0;
+        }
+
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            background: white;
+            border-radius: 12px;
+            padding: 4px;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: 700;
+            font-size: 1.7rem;
+        }
+
+        .hero {
+            padding: 90px 0;
+            background: linear-gradient(180deg, #F4F8FB 0%, #FFFFFF 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #0B2545;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, #0B2545, #0F8FAF);
+            border: none;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: 600;
+            box-shadow: 0 10px 24px rgba(15, 143, 175, .25);
+        }
+
+        .btn-main:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(15, 37, 69, .08);
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 22px;
+            padding: 28px;
+            height: 100%;
+            box-shadow: 0 8px 24px rgba(15, 37, 69, .08);
+            transition: .3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: #0F8FAF;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h5 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-weight: 800;
+            color: #0B2545;
+        }
+
+        .section-title p {
+            color: #64748B;
+        }
+
+        .about {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #0B2545, #0F8FAF);
+            color: white;
+            text-align: center;
+        }
+
+        footer {
+            background: #07182D;
+            color: #CBD5E1;
+            padding: 24px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-inner">
+            <img src="/assets/ca validation tool logo.png" alt="CA Validation Tool" class="loader-logo">
+            <div class="loader-progress-track">
+                <div class="loader-progress-bar" id="loaderProgressBar"></div>
+            </div>
+            <div class="loader-percent" id="loaderPercent">0%</div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+
+            <a class="navbar-brand d-flex align-items-center gap-3" href="home.html">
+                <img src="assets/ca validation tool logo.png" alt="CA Validation Tool Logo" class="logo-image" style="height: 93px;
+    background: white;
+    width: 118px;">
+                CA Validation Tool
+            </a>
+
+            <div class="ms-auto d-flex gap-2">
+                <a href="/login.html" class="btn btn-light px-4">
+                    <i class="fa-solid fa-right-to-bracket me-2"></i>Login
+                </a>
+
+                <a href="/signup.html" class="btn btn-outline-light px-4">
+                    Sign Up
+                </a>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+                    <h1>Secure & Smart Validation Platform</h1>
+
+                    <p>
+                        Validate PAN, TAN, Aadhaar, GSTIN, Email, Mobile Number, IFSC and PIN Code
+                        using a clean, fast and professional web interface designed for students,
+                        accountants and businesses.
+                    </p>
+
+                    <div class="d-flex gap-3 mt-4 flex-wrap">
+                        <a href="/login.html" class="btn btn-main">
+                          <i class="fa-regular fa-badge-check me-2"></i>
+                            Start Validation
+                        </a>
+
+                        <a href="#features" class="btn btn-outline-secondary px-4 py-3 rounded-4">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="hero-card">
+                        <div class="row text-center g-4">
+                            <div class="col-6">
+                                <i class="fa-solid fa-id-card text-info fs-1"></i>
+                                <h6 class="mt-3">PAN / TAN</h6>
+                            </div>
+
+                            <div class="col-6">
+                                <i class="fa-solid fa-file-invoice text-success fs-1"></i>
+                                <h6 class="mt-3">GSTIN</h6>
+                            </div>
+
+                            <div class="col-6">
+                                <i class="fa-solid fa-envelope text-primary fs-1"></i>
+                                <h6 class="mt-3">Email</h6>
+                            </div>
+
+                            <div class="col-6">
+                                <i class="fa-solid fa-phone text-warning fs-1"></i>
+                                <h6 class="mt-3">Mobile</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-5" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Key Features</h2>
+                <p>Everything you need for quick and reliable validation</p>
+            </div>
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fa-solid fa-bolt"></i>
+                        <h5>Instant Validation</h5>
+                        <p>Validate formats in real-time with fast response and clear feedback.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fa-solid fa-shield-check"></i>
+                        <h5>Secure Access</h5>
+                        <p>Login-based access ensures only authenticated users can use the dashboard.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <h5>History Tracking</h5>
+                        <p>Maintain and review previous validation activities whenever needed.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+                    <img src="assets/ca validation tool logo.png" alt="CA Validation Tool Logo" class="logo-image"
+                        style="height: 219px;
+    background: white;
+    width: 237px;">
+                </div>
+
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-3">About This Project</h2>
+
+                    <p class="text-secondary">
+                        CA Validation Tool is a student-built full-stack web application created using
+                        HTML, CSS, Bootstrap, JavaScript, Node.js and MySQL.
+                    </p>
+
+                    <p class="text-secondary">
+                        The current version performs format validation for PAN, TAN, Aadhaar, GSTIN,
+                        Email and Mobile numbers, and demonstrates authentication, dashboard design,
+                        history management and modern UI development.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="fw-bold mb-3">Ready to Start?</h2>
+            <p class="mb-4 text-white-50">Login to access the validation dashboard and begin validating records.</p>
+
+            <a href="/login.html" class="btn btn-light btn-lg px-5">
+                Go to Login
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            © 2026 CA Validation Tool • Verify • Validate • Secure
+        </div>
+    </footer>
+
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" style="display:none; position:fixed; bottom:0; width:100%; background:#2c3e50; color:#fff; padding:15px; text-align:center; z-index:9999;">
+        <p style="display:inline-block; margin:0 20px 0 0; font-size:14px;">We use cookies to improve your experience. By continuing to use this site, you agree to our <a href="/privacy-policy.html" style="color:#4facfe;">Privacy Policy</a> and <a href="/terms.html" style="color:#4facfe;">Terms of Service</a>.</p>
+        <button onclick="acceptCookies()" style="background:#4facfe; color:#fff; border:none; padding:8px 20px; cursor:pointer; border-radius:4px; font-weight:bold;">Accept</button>
+    </div>
+    
+    <script>
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+        
+        window.onload = function() {
+            if(!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookie-banner').style.display = 'block';
+            }
+        }
+    </script>
+    <script>
+        (function() {
+            const bar = document.getElementById('loaderProgressBar');
+            const pct = document.getElementById('loaderPercent');
+            const loader = document.getElementById('pageLoader');
+            let progress = 0;
+            
+            // Simulate fast load from 0 to 90
+            const interval = setInterval(() => {
+                if (progress < 90) {
+                    progress += Math.random() * 6;
+                    if (progress > 90) progress = 90;
+                    if (bar) bar.style.width = progress.toFixed(0) + '%';
+                    if (pct) pct.textContent = progress.toFixed(0) + '%';
+                }
+            }, 200);
+            
+            // On full load → 100% then hide
+            window.addEventListener('load', () => {
+                clearInterval(interval);
+                progress = 100;
+                if (bar) bar.style.width = '100%';
+                if (pct) pct.textContent = '100%';
+                setTimeout(() => {
+                    if (loader) loader.classList.add('hidden');
+                }, 400);
+            });
+        })();
+    </script>
+</body>
+
+</html>

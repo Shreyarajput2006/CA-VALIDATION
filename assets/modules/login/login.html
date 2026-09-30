@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="CA Validation Tool - Validate PAN, TAN, GST, and Aadhaar seamlessly.">
+    <meta property="og:title" content="CA Validation Tool">
+    <meta property="og:description" content="Validate PAN, TAN, GST, and Aadhaar seamlessly.">
+    <meta property="og:image" content="/assets/social-preview.png">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | CA Validation Tool</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <link rel="stylesheet" href="/assets/modules/login/login.css">
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-inner">
+            <img src="/assets/ca validation tool logo.png" alt="CA Validation Tool" class="loader-logo">
+            <div class="loader-progress-track">
+                <div class="loader-progress-bar" id="loaderProgressBar"></div>
+            </div>
+            <div class="loader-percent" id="loaderPercent">0%</div>
+        </div>
+    </div>
+</div>
+
+  <div class="card shadow-lg login-card">
+    <div class="login-header">
+      <i class="fa-solid fa-shield-halved"></i>
+      <h3 class="mb-0">CA Validation Tool</h3>
+      <p class="mb-0 mt-2">Login to continue</p>
+    </div>
+
+    <div class="card-body p-4">
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Email Address</label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="fa-solid fa-envelope"></i>
+          </span>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            placeholder="Enter your email"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Password</label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="fa-solid fa-lock"></i>
+          </span>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Enter your password"
+          />
+          <span class="input-group-text toggle-password" onclick="togglePassword()">
+            <i class="fa-solid fa-eye" id="eyeIcon"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="d-grid mt-4">
+        <button class="btn btn-primary btn-login" onclick="login()">
+          <i class="fa-solid fa-right-to-bracket me-2"></i>
+          Login
+        </button>
+      </div>
+
+      <div class="footer-text">
+        Don't have an account?
+        <a href="/signup.html">Create Account</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/modules/login/login.js"></script>
+    <script>
+        (function() {
+            const bar = document.getElementById('loaderProgressBar');
+            const pct = document.getElementById('loaderPercent');
+            const loader = document.getElementById('pageLoader');
+            let progress = 0;
+            
+            // Simulate fast load from 0 to 90
+            const interval = setInterval(() => {
+                if (progress < 90) {
+                    progress += Math.random() * 6;
+                    if (progress > 90) progress = 90;
+                    if (bar) bar.style.width = progress.toFixed(0) + '%';
+                    if (pct) pct.textContent = progress.toFixed(0) + '%';
+                }
+            }, 200);
+            
+            // On full load → 100% then hide
+            window.addEventListener('load', () => {
+                clearInterval(interval);
+                progress = 100;
+                if (bar) bar.style.width = '100%';
+                if (pct) pct.textContent = '100%';
+                setTimeout(() => {
+                    if (loader) loader.classList.add('hidden');
+                }, 400);
+            });
+        })();
+    </script>
+</body>
+</html>

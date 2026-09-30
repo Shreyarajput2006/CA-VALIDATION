@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description" content="CA Validation Tool - Validate PAN, TAN, GST, and Aadhaar seamlessly.">
+    <meta property="og:title" content="CA Validation Tool">
+    <meta property="og:description" content="Validate PAN, TAN, GST, and Aadhaar seamlessly.">
+    <meta property="og:image" content="/assets/social-preview.png">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CA Validation Tool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+   
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-inner">
+            <img src="/assets/ca validation tool logo.png" alt="CA Validation Tool" class="loader-logo">
+            <div class="loader-progress-track">
+                <div class="loader-progress-bar" id="loaderProgressBar"></div>
+            </div>
+            <div class="loader-percent" id="loaderPercent">0%</div>
+        </div>
+    </div>
+</div>
+
+    <header>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebarMenu">
+    <i class="fa-solid fa-bars"></i>
+</button>
+        <div class="logo">
+
+            <img src="assets/ca validation tool logo.png" alt="CA Validation Tool Logo" class="logo-image" style="height: 100px;
+                   background: white;
+                    width: 100px;">
+
+            <div>
+
+                <h1>CA Validation Tool</h1>
+
+                <p>Validate PAN, TAN, Aadhaar, GSTIN, Mobile & Email </p>
+
+            </div>
+
+        </div>
+
+        <div class="header-icons">
+
+            <button id="darkModeBtn"><i class="fa-solid fa-moon"></i></button>
+
+            <!-- <button id="historyBtn">
+                <i class="fa-solid fa-clock-rotate-left"></i> History
+            </button> -->
+
+            <button onclick="logout()" class="logout-btn" style="background: red" aria-label="Logout">
+    <i class="fa-solid fa-right-from-bracket"></i> <span class="logout-text">Logout</span>
+</button>
+
+        </div>
+
+    </header>
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <div class="sidebar-container">
+
+        <div class="sidebar" id="sidebarMenu">
+
+            <h2>Select Validation</h2>
+
+           <ul>
+
+   <li class="menu-item active" id="pan">
+        <span class="menu-icon icon-pan"><i class="fa-regular fa-id-card"></i></span> PAN
+    </li>
+
+    <li class="menu-item" id="tan">
+        <span class="menu-icon icon-tan"><i class="fa-regular fa-id-card"></i></span> TAN
+    </li>
+
+    <li class="menu-item" id="gst">
+        <span class="menu-icon icon-gst"><i class="fa-solid fa-file-invoice"></i></span> GSTIN
+    </li>
+
+    <li class="menu-item" id="aadhaar">
+        <span class="menu-icon icon-aadhaar"><i class="fa-solid fa-user"></i></span> Aadhaar
+    </li>
+
+    <li class="menu-item" id="email">
+        <span class="menu-icon icon-email"><i class="fa-solid fa-envelope"></i></span> Email
+    </li>
+
+    <li class="menu-item" id="mobile">
+        <span class="menu-icon icon-mobile"><i class="fa-solid fa-phone"></i></span> Mobile
+    </li>
+
+</ul>
+
+            <div class="user-profile-card">
+        <div class="user-avatar" id="userAvatar">U</div>
+        <div class="user-details">
+            <span class="user-name" id="sidebarUserName">Loading...</span>
+            <span class="user-email" id="sidebarUserEmail">user@example.com</span>
+        </div>
+    </div>
+
+        </div>
+
+        <main class="content">
+
+            <div class="welcome-card">
+
+                <img src="assets/ca validation tool logo.png" alt="CA Validation Tool Logo" class="logo-image" style="height: 130px;
+                    background: white;
+                     width: 153px;">
+
+                <div>
+
+                    <h2>Welcome!</h2>
+
+                   <p style="font-size: 25px; font-style: oblique;">Choose any validation from the menu.</p>
+
+                </div>
+
+            </div>
+
+            <div class="status-container">
+
+                <div class="stat-card">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h2 id="totalCount">0</h2>
+                    <p>Total Validations</p>
+                </div>
+
+                <div class="stat-card success">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h2 id="successCount">0</h2>
+                    <p>Success</p>
+                </div>
+
+                <div class="stat-card failed">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    <h2 id="failedCount">0</h2>
+                    <p>Failed</p>
+                </div>
+
+            </div>
+
+
+            <div class="input-section">
+
+                <label>Enter Value</label>
+
+                <div class="input-box">
+
+                 <input type="text" id="inputValue" placeholder="Enter PAN number here...">
+                    <i class="fa-solid fa-xmark" id="clearBtn"></i>
+
+                </div>
+
+                <p class="hint" id="hintText">
+                    Enter 10 character PAN number (e.g., ABCDE1234F)
+                </p>
+
+                <div id="gstCaptchaBox" style="display:none;margin-top:16px;">
+
+                    <img id="gstCaptchaImg"
+                          style="height:60px;border:1px solid #ddd;border-radius:8px;">
+
+                        <button type="button"
+                             onclick="loadGSTCaptcha()"
+                            style="margin-left:10px;">
+                                   Refresh
+                                    </button>
+
+                                 <input type="text"  id="gstCaptchaInput" placeholder="Enter captcha" style="margin-top:12px;width:100%;padding:12px;">
+
+                    </div>
+
+
+<!-- Aadhaar Integrated UI -->
+<div id="aadhaarBox" style="display:none; margin-top:24px;">
+
+  <div class="aadhaar-inline-box">
+
+    <div class="field-group">
+      <label>Captcha</label>
+
+      <div class="captcha-row">
+        <input type="text"
+               id="aadhaarCaptchaInput"
+               class="modern-input captcha-input"
+               placeholder="Enter captcha">
+
+        <div class="captcha-box">
+          <img id="aadhaarCaptchaImg" src="">
+        </div>
+
+        <button class="refresh-btn"
+                onclick="loadAadhaarCaptcha()">
+          <i class="fa-solid fa-rotate-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="otp-btn-wrap">
+      <button class="gradient-btn" onclick="sendAadhaarOtp()">
+        <i class="fa-solid fa-paper-plane"></i>
+        Send OTP
+      </button>
+    </div>
+
+    <div class="otp-inline-row">
+
+      <div class="field-group" style="flex:1;">
+        <label>Enter OTP</label>
+
+        <input type="text"
+               id="aadhaarOtpInput"
+               class="modern-input"
+               placeholder="Enter 6 digit OTP"
+               maxlength="6">
+      </div>
+
+      <button class="gradient-btn verify-btn"
+              onclick="verifyAadhaarOtp()">
+        <i class="fa-solid fa-check-circle"></i>
+        Submit OTP
+      </button>
+    </div>
+
+    
+
+  </div>
+
+</div>
+        
+<button class="validate-btn" id="validateBtn"><i class="fa-solid fa-shield-halved"></i>Validate</button>
+
+
+<!-- Aadhaar Result Section --> 
+ <div id="otpSuccessBox" class="otp-success-box" style="display:none;">
+     <i class="fa-solid fa-circle-check"></i>
+      OTP verified successfully. You can now download the Aadhaar PDF. 
+    </div>
+     <div id="pdfWarningBox" class="pdf-warning-box" style="display:none;"> 
+        <i class="fa-solid fa-triangle-exclamation"></i>
+         <div>
+             <b>PDF Password:</b>
+              First 4 letters of your name in 
+              <b>CAPITAL</b>
+               + birth year. 
+               <br> Example:
+                <b>SHRE2006</b> 
+            </div> 
+        </div> 
+        <div id="downloadPdfSection" class="download-section" style="display:none;"> 
+            <button class="gradient-btn download-btn" onclick="downloadAadhaarPdf()"> 
+                <i class="fa-solid fa-download"></i> Download Aadhaar PDF </button>
+                 </div>
+
+           <div class="result-section-container">
+    <hr class="section-divider">
+    <p class="section-title"><b>Result</b></p>
+
+    <!-- Waiting State Card -->
+    <div class="waiting-card" id="waitingCard">
+        <img src="assets/ca validation tool logo.png" alt="CA Validation Tool Logo" class="logo-image">
+        <h2>Waiting For Validation</h2>
+        <p>Please enter any value and click Validate.</p>
+    </div>
+
+    <!-- Active Validation Result Card -->
+    <div class="result-card" id="resultCard" style="display: none;">
+        <i class="fa-solid fa-circle-check" id="resultIcon" style="display: block;color: green;"></i>
+        <div class="result-text">
+            <h2 id="resultTitle">Valid PAN Number</h2>
+            <p id="resultMessage">The PAN Number you entered is valid</p>
+        </div>
+        
+    </div>
+
+    <!-- Format Info Card (Directly Below Result) -->
+    <div class="format-card">
+        <div class="format-icon-box">
+            <i class="fa-solid fa-circle-info" id="formatIcon"></i>
+        </div>
+        <div class="format-details">
+            <h3 id="formatTitle">PAN Format</h3>
+            <p id="formatMessage">5 Alphabet + 4 Number + 1 Alphabet</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============ BULK VALIDATION SECTION ============ -->
+<div class="bulk-section">
+    <h2 class="history-section-title">Bulk Validation</h2>
+
+    <div class="bulk-card">
+
+        <div class="bulk-controls">
+
+            <div class="bulk-field">
+                <label>Validation Type</label>
+                <select id="bulkType" class="form-select">
+                    <option value="pan">PAN</option>
+                    <option value="tan">TAN</option>
+                    <option value="email">Email</option>
+                    <option value="mobile">Mobile</option>
+                </select>
+            </div>
+
+            <div class="bulk-field">
+                <label>Upload File (.csv, .xlsx, .pdf)</label>
+                <input type="file" id="bulkFileInput" accept=".csv,.xlsx,.xls,.pdf">
+            </div>
+
+            <button id="bulkStartBtn" class="validate-btn">
+                <i class="fa-solid fa-layer-group"></i> Start Bulk Validation
+            </button>
+
+        </div>
+
+        <!-- <p class="hint">
+            Ek file upload karo jisme sirf ek type (PAN ya TAN ya Email ya Mobile) ke number/values ho.
+            GSTIN aur Aadhaar mein captcha/OTP zaroori hai isliye woh bulk mein support nahi hai.
+        </p> -->
+
+        <div id="bulkProgressBox" style="display:none;">
+            <div class="bulk-progress-bar">
+                <div id="bulkProgressFill" class="bulk-progress-fill"></div>
+            </div>
+            <p id="bulkProgressText">0 / 0 validated...</p>
+        </div>
+
+        <div id="bulkResultBox" style="display:none;">
+
+            <div class="bulk-summary">
+                <span>Total: <b id="bulkTotal">0</b></span>
+                <span class="ok">Valid: <b id="bulkValid">0</b></span>
+                <span class="fail">Invalid: <b id="bulkInvalid">0</b></span>
+            </div>
+
+            <div class="bulk-export-actions">
+                <button id="bulkExportPdf" class="download-all-btn">
+                    <i class="fa-solid fa-file-pdf"></i> Download PDF
+                </button>
+                <button id="bulkExportExcel" class="excel-btn">
+                    <i class="fa-solid fa-file-excel"></i> Download Excel
+                </button>
+                <button id="bulkExportJson" class="clear-history-btn" style="background:#334155">
+                    <i class="fa-solid fa-file-code"></i> Download JSON
+                </button>
+            </div>
+
+            <div class="bulk-table-wrap">
+                <!-- Mobile par table ko swipe karne ka hint -->
+<p class="bulk-scroll-hint"><i class="fa-solid fa-arrows-left-right"></i> Swipe left / right to see all columns</p>
+               <table class="bulk-table">
+    <thead id="bulkTableHead"></thead>
+    <tbody id="bulkTableBody"></tbody>
+</table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- ============ END BULK VALIDATION SECTION ============ -->
+
+
+           <h2 class="history-section-title">History</h2>
+
+            <div class="history-popup" id="historyPopup">
+
+                <div class="history-header">
+    <h2>Validation History</h2>
+</div>
+                <!-- Buttons -->
+                <div class="history-actions">
+
+                    <button id="downloadAllBtn" class="download-all-btn">
+                        <i class="fa-solid fa-download"></i>
+                        Download PDF
+                    </button>
+
+                    <button id="exportExcelBtn" class="excel-btn">
+                        <i class="fa-solid fa-file-excel"></i>
+                        Export Excel
+                    </button>
+
+                    <button id="clearHistoryBtn" class="clear-history-btn">
+                        <i class="fa-solid fa-trash"></i>
+                        Clear History
+                    </button>
+
+                </div>
+
+                <div class="history-filters">
+
+  <select id="filterType" class="form-select">
+    <option value="">All Types</option>
+    <option value="PAN">PAN</option>
+    <option value="TAN">TAN</option>
+    <option value="GSTIN">GSTIN</option>
+    <option value="AADHAAR">AADHAAR</option>
+    <option value="EMAIL">EMAIL</option>
+    <option value="MOBILE">MOBILE</option>
+  </select>
+
+  <select id="filterStatus" class="form-select">
+    <option value="">All Status</option>
+    <option value="Valid">Valid</option>
+    <option value="Invalid">Invalid</option>
+  </select>
+
+  <input type="date" id="filterDate" class="form-control">
+
+</div>
+
+                <div id="historyList">
+
+                    <p style="margin-top: 27px; font-size: 20px;">No history found.</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="gst-modal-overlay" id="panModalOverlay">
+
+    <div class="gst-modal" id="panModalCard">
+
+        <div class="gst-modal-header">
+
+            <div class="gst-modal-brand">
+
+                <img src="assets/ca validation tool logo.png" alt="logo">
+
+                <div>
+                    <h2>PAN Verification Certificate</h2>
+                    <p>Official validation report</p>
+                </div>
+
+            </div>
+
+            <span class="gst-status-badge" id="panModalStatus">VALID</span>
+
+        </div>
+
+        <div class="gst-modal-body">
+
+            <div class="gst-field">
+                <label>Full Name</label>
+                <div id="panModalName">-</div>
+            </div>
+
+            <div class="gst-field">
+                <label>PAN Number</label>
+                <div id="panModalNumber">-</div>
+            </div>
+
+            <div class="gst-grid-2">
+
+                <div class="gst-field">
+                    <label>Status</label>
+                    <div id="panModalStatusText">-</div>
+                </div>
+
+                <div class="gst-field">
+                    <label>Verification</label>
+                    <div>PAN Database</div>
+                </div>
+
+            </div>
+
+            <div class="gst-footer-row">
+
+                <div>
+                    <small>Verified on</small>
+                    <div id="panModalVerifiedOn">-</div>
+                </div>
+
+                <div class="gst-qr">
+                    <div>QR</div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="gst-modal-actions">
+
+            <button id="closePanModal" class="gst-close-btn">Close</button>
+
+            <button id="downloadPanPdf" class="gst-download-btn">
+
+                <i class="fa-solid fa-download"></i> Download PDF
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+            
+
+            
+
+           <footer class="footer-section">
+
+    <div class="footer-top">
+
+        <div class="footer-brand">
+
+            <img src="assets/ca validation tool logo.png" alt="CA Validation Tool">
+
+            <h3>CA Validation Tool</h3>
+
+            <p>
+                Secure and professional validation platform for PAN, TAN, GSTIN,
+                Aadhaar, Email and Mobile verification.
+            </p>
+
+        </div>
+
+        <div class="footer-links">
+
+            <h4>Quick Links</h4>
+
+            <a href="#">Dashboard</a>
+            <a href="#">Validation History</a>
+            <a href="#">Reports</a>
+            <a href="#">Support</a>
+
+        </div>
+
+        <div class="footer-links">
+
+            <h4>Features</h4>
+
+            <a href="#">PAN Validation</a>
+            <a href="#">GSTIN Validation</a>
+            <a href="#">Aadhaar Validation</a>
+            <a href="#">Excel &amp; PDF Export</a>
+
+        </div>
+
+        <div class="footer-social">
+
+            <h4>Connect</h4>
+
+            <div class="social-icons">
+
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-solid fa-envelope"></i></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>© 2026 CA Validation Tool • Verify • Validate • Secure</p>
+
+    </div>
+
+</footer>
+
+        </main>
+
+    </div>
+   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<!-- PDF.js: uploaded PDF file ke andar se text/numbers padhne ke liye -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="/assets/modules/dashboard/dashboard.js"></script>
+
+<script src="/script.js"></script>
+
+<script src="js/mobile-menu.js"></script>
+<script src="js/pan.js"></script>
+<script src="js/tan.js"></script>
+<script src="/js/gst.js"></script>
+<script src="js/aadhaar.js"></script>
+<script src="js/email.js"></script>
+<script src="js/mobile.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- jsPDF-AutoTable: bulk validation ki PDF report mein table banane ke liye -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<!-- Bulk Validation module -->
+<script src="js/bulk.js"></script>
+    <!-- <script src="js/darkmode.js"></script> -->
+    <!-- <script src="js/history.js"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        (function() {
+            const bar = document.getElementById('loaderProgressBar');
+            const pct = document.getElementById('loaderPercent');
+            const loader = document.getElementById('pageLoader');
+            let progress = 0;
+            
+            // Simulate fast load from 0 to 90
+            const interval = setInterval(() => {
+                if (progress < 90) {
+                    progress += Math.random() * 6;
+                    if (progress > 90) progress = 90;
+                    if (bar) bar.style.width = progress.toFixed(0) + '%';
+                    if (pct) pct.textContent = progress.toFixed(0) + '%';
+                }
+            }, 200);
+            
+            // On full load → 100% then hide
+            window.addEventListener('load', () => {
+                clearInterval(interval);
+                progress = 100;
+                if (bar) bar.style.width = '100%';
+                if (pct) pct.textContent = '100%';
+                setTimeout(() => {
+                    if (loader) loader.classList.add('hidden');
+                }, 400);
+            });
+        })();
+    </script>
+</body>
+
+</html>

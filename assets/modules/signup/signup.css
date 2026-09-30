@@ -1,0 +1,87 @@
+body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+     background: linear-gradient(135deg, #0F8FAF, #1e293b);
+      font-family: Arial, sans-serif;
+    }
+
+    .signup-card {
+      width: 90%;
+      max-width: 420px;
+      border: none;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    @media (max-width: 480px) {
+      .signup-card {
+        width: 92%;
+        max-width: 350px;
+        border-radius: 16px;
+      }
+      .signup-header {
+        padding: 18px 16px;
+      }
+      .signup-header i {
+        font-size: 34px;
+      }
+      .signup-header h3 {
+        font-size: 17px;
+      }
+      .card-body.p-4 {
+        padding: 14px !important;
+      }
+    }
+
+    .signup-header {
+      /* background: #2563eb; */
+      background: linear-gradient(135deg, #0B2545, #0F8FAF);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .signup-header i {
+      font-size: 45px;
+      margin-bottom: 10px;
+    }
+
+    .form-control {
+      height: 48px;
+      border-radius: 10px;
+    }
+
+    .input-group-text {
+      border-radius: 10px 0 0 10px;
+    }
+
+    .btn-signup {
+      height: 48px;
+      border-radius: 10px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #0B2545, #0F8FAF);
+      border: none;
+    }
+
+    .btn-signup:hover {
+      background: #1d4ed8;
+    }
+
+    .toggle-password {
+      cursor: pointer;
+    }
+
+    .footer-text {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .footer-text a {
+      text-decoration: none;
+      font-weight: 600;
+       color: #0F8FAF;
+    }

@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: ca-validation-tool
+    env: node
+    buildCommand: npm install
+    startCommand: node server/server.js
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: TRACES_COOKIE
+        sync: false
+      - key: ABSTRACT_MOBILE_API_KEY
+        sync: false
+      - key: ABSTRACT_API_KEY
+        sync: false
+      - key: GST_API_KEY
+        sync: false
+      - key: GST_TOKEN
+        sync: false
