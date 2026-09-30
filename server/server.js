@@ -44,6 +44,11 @@ app.use('/api/email', emailRoutes);
 app.use('/api/mobile', mobileRoutes); 
 app.use('/api/aadhaar', aadhaarRoutes);
 
+app.get('/api/health', (req, res) => {
+    const mongoose = require('mongoose');
+    res.json({ db_status: mongoose.connection.readyState });
+});
+
 // 3. HTML Routes (Explicitly serving main pages)
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
