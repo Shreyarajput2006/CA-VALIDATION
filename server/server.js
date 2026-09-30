@@ -18,6 +18,9 @@ const mobileRoutes = require('./routes/mobile');
 const app = express();
 const rateLimit = require('express-rate-limit');
 
+// Trust proxy required for Render deployment to fix express-rate-limit error
+app.set('trust proxy', 1);
+
 // Rate Limiter for Spam Protection
 const apiLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
